@@ -47,13 +47,8 @@ public class CaesarBreaker {
     
     private String decrypt(String encrypted) {
         CaesarCipher cc = new CaesarCipher();
-        int[] freqs = countLetters(encrypted);
-        int maxIndex = maxIndex(freqs);
-        int dkey = maxIndex - 4;
-        if (maxIndex < 4) {
-            dkey = 26 - (4-maxIndex);
-        }
-        return cc.encrypt(encrypted, 26 - dkey);
+        int key = getKey(encrypted);
+        return cc.encrypt(encrypted, key);
     }
 
     public void testDecrypt() {
@@ -73,5 +68,15 @@ public class CaesarBreaker {
     public void testHalfOfString() {
         String message = "abababababababab";
         System.out.println(halfOfString(message, 1));
+    }
+    
+    private int getKey(String s) {
+        int[] freqs = countLetters(s);
+        int maxIndex = maxIndex(freqs);
+        int dkey = maxIndex - 4;
+        if (maxIndex < 4) {
+            dkey = 26 - (4-maxIndex);
+        }
+        return 26 - dkey;
     }
 }
