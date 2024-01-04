@@ -9,6 +9,4 @@ comment3.params=
 comment3.target=void\ testEncrypt()
 comment4.params=
 comment4.target=void\ testEncryptTwoKeys()
-comment5.params=args
-comment5.target=void\ main(java.lang.String[])
-numComments=6
+numComments=5

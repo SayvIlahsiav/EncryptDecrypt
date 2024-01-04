@@ -84,9 +84,4 @@ public class CaesarCipher {
         String encrypted = encryptTwoKeys(message, key1, key2);
         System.out.println("\nEncrypted Message:\n" + encrypted);
     }
-    
-    public static void main(String[] args) {
-        
-    }
-
 }
