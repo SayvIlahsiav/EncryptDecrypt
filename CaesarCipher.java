@@ -71,6 +71,20 @@ public class CaesarCipher {
         System.out.println("\nEncrypted Message:\n" + encrypted);
     }
     
+    public void testEncryptTwoKeys() {
+        //System.out.println(encryptTwoKeys("First Legion", 23, 17));
+        //System.out.println(encryptTwoKeys("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 8, 21));
+        FileResource fr = new FileResource();
+        String message = fr.asString();
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter key1 to encrypt message: ");
+        int key1 = input.nextInt();
+        System.out.print("Enter key2 to encrypt message: ");
+        int key2 = input.nextInt();
+        String encrypted = encryptTwoKeys(message, key1, key2);
+        System.out.println("\nEncrypted Message:\n" + encrypted);
+    }
+    
     public static void main(String[] args) {
         
     }
