@@ -6,8 +6,7 @@ import edu.duke.*;
  * @version (a version number or a date)
  */
 public class CaesarBreaker {
-    private int[] countLetters(FileResource resource) {
-        String message = resource.asString();
+    private int[] countLetters(String message) {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         int[] counts = new int[26];
         for (int i = 0; i < message.length(); i++) {
@@ -22,18 +21,17 @@ public class CaesarBreaker {
     
     public void testCountLetters() {
         FileResource resource = new FileResource();
-        int[] counts = countLetters(resource);
+        String message = resource.asString();
+        int[] counts = countLetters(message);
         for (int i : counts) {
             System.out.println(i);
         }
     }
     
     private int maxIndex(int[] counts) {
-        int maxFreq = 0;
         int maxIndex = 0;
         for (int i = 0; i < counts.length; i++) {
-            if (counts[i] > maxFreq) {
-                maxFreq = counts[i];
+            if (counts[i] > counts[maxIndex]) {
                 maxIndex = i;
             }
         }
@@ -42,8 +40,25 @@ public class CaesarBreaker {
     
     public void testMaxIndex() {
         FileResource resource = new FileResource();
-        int[] counts = countLetters(resource);
+        String message = resource.asString();
+        int[] counts = countLetters(message);
         System.out.println(maxIndex(counts));
     }
+    
+    private String decrypt(String encrypted) {
+        CaesarCipher cc = new CaesarCipher();
+        int[] freqs = countLetters(encrypted);
+        int maxIndex = maxIndex(freqs);
+        int dkey = maxIndex - 4;
+        if (maxIndex < 4) {
+            dkey = 26 - (4-maxIndex);
+        }
+        return cc.encrypt(encrypted, 26 - dkey);
+    }
 
+    public void testDecrypt() {
+        FileResource resource = new FileResource();
+        String message = resource.asString();
+        System.out.println(decrypt(message));
+    }
 }
