@@ -61,4 +61,17 @@ public class CaesarBreaker {
         String message = resource.asString();
         System.out.println(decrypt(message));
     }
+    
+    private String halfOfString(String message, int start) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = start; i < message.length(); i+=2) {
+            sb.append(message.charAt(i));
+        }
+        return sb.toString();
+    }
+    
+    public void testHalfOfString() {
+        String message = "abababababababab";
+        System.out.println(halfOfString(message, 1));
+    }
 }
