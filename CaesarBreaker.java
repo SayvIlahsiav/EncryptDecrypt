@@ -27,5 +27,23 @@ public class CaesarBreaker {
             System.out.println(i);
         }
     }
+    
+    private int maxIndex(int[] counts) {
+        int maxFreq = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] > maxFreq) {
+                maxFreq = counts[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+    
+    public void testMaxIndex() {
+        FileResource resource = new FileResource();
+        int[] counts = countLetters(resource);
+        System.out.println(maxIndex(counts));
+    }
 
 }
