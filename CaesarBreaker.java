@@ -79,4 +79,20 @@ public class CaesarBreaker {
         }
         return 26 - dkey;
     }
+    
+    public String decryptTwoKeys(String encrypted) {
+        String firstStr = halfOfString(encrypted, 0);
+        String secondStr = halfOfString(encrypted, 1);
+        int key1 = getKey(firstStr);
+        int key2 = getKey(secondStr);
+        System.out.println(key1 + "," + key2);
+        CaesarCipher cc = new CaesarCipher();
+        return cc.encryptTwoKeys(encrypted, key1, key2);
+    }
+    
+    public void testDecryptTwoKeys() {
+        FileResource resource = new FileResource();
+        String message = resource.asString();
+        System.out.println(decryptTwoKeys(message));
+    }
 }
