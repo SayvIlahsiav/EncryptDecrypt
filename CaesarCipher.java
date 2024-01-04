@@ -6,5 +6,9 @@
  * @version (a version number or a date)
  */
 public class CaesarCipher {
+    
+    public static void main(String[] args) {
+        
+    }
 
 }
